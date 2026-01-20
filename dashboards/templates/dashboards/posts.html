@@ -33,6 +33,8 @@
                 <a href="{% url "delete_posts" post.id %}"><i class="fa fa-trash text-danger"></i></a>&nbsp;
             </td>
             </tr>
+            {% else %}
+                <h3 class="text-denger">You don't have permisson to see this page</h3>
             {% endfor %}
         </tbody>
         </table>        

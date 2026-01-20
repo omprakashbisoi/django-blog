@@ -24,8 +24,9 @@ def register(request):
     if request.method == "POST":
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('register')
+            user = form.save()
+            auth.login(request,user)
+            return redirect('home')
     else:
         form = RegistrationForm()
     context = {
