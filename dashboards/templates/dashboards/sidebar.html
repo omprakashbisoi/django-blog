@@ -6,8 +6,12 @@
         </a>
 
         <a href="{% url 'categories' %}"
-           class="nav-link text-dark {% if request.path == '/dashbaord/category/' or request.path == '/dashbaord/category/add/' or request.path == '/dashbaord/category/edit/<int:pk>/'  %}bg-warning{% endif %}">
+           class="nav-link text-dark {% if '/category/' in request.path %}bg-warning{% endif %}">
             Categories
+        </a>
+        <a href="{% url 'posts' %}"
+           class="nav-link text-dark {% if '/posts/' in request.path %}bg-warning{% endif %}">
+            Posts
         </a>
     </div>
 </div>
