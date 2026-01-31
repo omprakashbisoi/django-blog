@@ -5,13 +5,14 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 
 def posts_by_category(request,category_id):
-    posts_featured = Blog.objects.filter(status = 1,is_featured = True,pk =category_id).order_by('updated_at')
-    # normal_posts = Blog.objects.filter(status = 1,is_featured = False,pk =category_id).order_by('updated_at')
     category = get_object_or_404(Category,pk=category_id)
+    posts_featured = Blog.objects.filter(is_featured = True,status = 1,category =category).order_by('updated_at')
+    # normal_posts = Blog.objects.filter(status = 1,is_featured = False,pk =category_id).order_by('updated_at')
     context = {
         "posts_featured":posts_featured,
         'category':category
     }
+    print(posts_featured)
     return render(request,'posts_by_category.html',context)
 
 def blogs(request,slug):
